@@ -22,5 +22,5 @@
 .App-body {
   text-align: center;
   font-size: max(10pt, 1vmin);
-  max-width: 65ch;
+  width: 25%;
 }

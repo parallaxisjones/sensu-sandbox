@@ -7,6 +7,7 @@ import App from "./App";
 import createApolloClient from "./apollo";
 
 import "./index.css";
+import 'antd/dist/antd.css'
 
 const apolloClient = createApolloClient();
 
