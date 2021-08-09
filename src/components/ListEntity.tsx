@@ -1,6 +1,6 @@
 import { List } from "antd";
 import React from "react";
-import { Node } from '../EntitiesList';
+import { Node } from '../types';
 
 const getName = (srn: string): string => {
     const re = /^srn:entities:(?<namespace>.*):(?<name>.*)$/;

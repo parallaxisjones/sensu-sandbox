@@ -1,28 +1,16 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Select } from 'antd';
+import { GetNamespacesQuery } from "../gql";
+import { NamespaceSelectorProps, NamespacesResponse } from "../types";
 
 // Query entities within the given namespace
-const query = gql`
-  query GetNamespaces {
-    viewer {
-        namespaces {
-            name
-        }
-    }
-  }
-`;
-type NamespacesResponse = { viewer: { namespaces: { name: string }[] } };
-type NamespaceSelectorProps = {
-    onNamespaceSelect: (namespace: string) => void,
-};
+
+
 const { Option } = Select;
-function onSearch(val: string) {
-    console.log('search:', val);
-}
 
 const NamespaceSelector: React.FC<NamespaceSelectorProps> = ({ onNamespaceSelect }) => {
-    const { loading, error, data } = useQuery<NamespacesResponse>(query);
+    const { loading, error, data } = useQuery<NamespacesResponse>(GetNamespacesQuery);
 
     if (loading) {
         return <p>Loading</p>;
@@ -44,7 +32,6 @@ const NamespaceSelector: React.FC<NamespaceSelectorProps> = ({ onNamespaceSelect
             style={{ width: 200 }}
             placeholder="Select a Namespace"
             optionFilterProp="children"
-            onSearch={onSearch}
             onChange={onNamespaceSelect}
         >
             {namespaces.map(({ name }) => (

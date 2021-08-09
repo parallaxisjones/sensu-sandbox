@@ -18,7 +18,9 @@
 .App-header {
   font-size: calc(10px + 2vmin);
 }
-
+.App-filters {
+  padding-bottom: 2rem;
+}
 .App-body {
   text-align: center;
   font-size: max(10pt, 1vmin);
