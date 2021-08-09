@@ -184,8 +184,8 @@ There are two ways to setup the Sensu Web Dev environment: manual installation (
      Copy the API key output from the `sensuctl api-key grant admin` command (the `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` part of the output) to the `.env.local` file
 
      ```ruby
-     REACT_APP_API="http://127.0.0.1:8080"
-     REACT_APP_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+     SENSU_API_URL="http://127.0.0.1:8080"
+     SENSU_API_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
      PORT=7678
      ```
 
