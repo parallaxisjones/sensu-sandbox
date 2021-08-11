@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  sensu-backend:
+    image: sensu/sensu:6.4.0
+    ports:
+      - 3000:3000
+      - 8080:8080
+    command: ["sensu-backend", "start"]
+  web:
+    build:
+      context: .
+      dockerfile: ./react.Dockerfile
+    depends_on:
+      - "sensu-backend"
+    container_name: sensu-web-dev
+    ports:
+      - 7678:7678
+    command: ["sh", "/usr/local/bin/init.sh"]
+    volumes:
+      - ./scripts/init.sh:/usr/local/bin/init.sh
+      - ./data/sample.yaml:/etc/sample.yaml
+      - .:/usr/src/app
+      - /usr/src/app/sensu-webdev/node_modules
+    environment:
+      - PORT=7678
+      - SENSU_VERSION=6.4.0
+      - SENSU_USERNAME=admin
+      - SENSU_PASSWORD=P@ssw0rd!
+      - SENSU_API_URL=http://sensu-backend:8080
